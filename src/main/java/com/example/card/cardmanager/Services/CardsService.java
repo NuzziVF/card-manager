@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CardsService {
@@ -21,4 +22,24 @@ public class CardsService {
                 .forEach(cards::add);
         return cards;
     }
+
+    public Optional<Cards> getCardById(int id) {
+        return cardsRepository.findById(id);
+    }
+
+    public Optional<Cards> removeCardById(int id) {
+        Optional<Cards> optionalCard = cardsRepository.findById(id);
+        if (optionalCard.isPresent()) {
+            cardsRepository.deleteById(id);
+            return optionalCard;
+        } else {
+            return null;
+        }
+    }
+
+    public Cards addCard(Cards card) {
+        return cardsRepository.save(card);
+    }
+
+
 }
