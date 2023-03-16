@@ -5,6 +5,7 @@ import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Repository.CardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,4 +43,17 @@ public class CardsService {
     }
 
 
+    public void editCard(int id, Cards cards) {
+        Optional<Cards> optionalCards = cardsRepository.findById(id);
+        if (optionalCards.isEmpty()) throw new IllegalArgumentException("Invalid Card ID: " + id);
+        Cards existingCard = optionalCards.get();
+        existingCard.setCard_name(cards.getCard_name());
+        existingCard.setCard_type(cards.getCard_type());
+        existingCard.setPower(cards.getPower());
+        existingCard.setToughness(cards.getToughness());
+        existingCard.setRarity(cards.getRarity());
+        existingCard.setConverted_mana_cost(cards.getConverted_mana_cost());
+        existingCard.setMana_cost(cards.getMana_cost());
+        cardsRepository.save(existingCard);
+    }
 }

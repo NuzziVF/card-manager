@@ -51,4 +51,9 @@ public class CardsController {
         cardsService.addCard(card);
         return card;
     }
+
+    @PutMapping("/cards/{id}")
+    public void editingCard(@PathVariable int id, @RequestBody @Valid Cards cards) {
+        cardsService.editCard(id, cards);
+    }
 }

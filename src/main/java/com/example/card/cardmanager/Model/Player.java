@@ -1,10 +1,21 @@
 package com.example.card.cardmanager.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "mtg_players_deck")
 public class Player {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "player_name")
     private String player_name;
+    @Column(name = "deck_name")
     private String deck_name;
+    @Column(name = "deck_format")
     private String deck_format;
 
     public Player(int id, String player_name, String deck_name, String deck_format) {
