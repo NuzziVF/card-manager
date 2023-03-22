@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeckService {
@@ -19,6 +20,24 @@ public class DeckService {
         deckRespository.findAll()
                 .forEach(deck::add);
         return deck;
+    }
+
+    public Optional<Deck> getOneDeck(int id) {
+        return deckRespository.findById(id);
+    }
+
+    public Optional<Deck> removeDeckById(int id) {
+        Optional<Deck> optionalDeck = deckRespository.findById(id);
+        if (optionalDeck.isPresent()) {
+            deckRespository.deleteById(id);
+            return optionalDeck;
+        } else {
+            return null;
+        }
+    }
+
+    public Deck addDeck(Deck deck) {
+        return deckRespository.save(deck);
     }
 
     public List<Deck> getAllDecksViaCard(int cardId) {
