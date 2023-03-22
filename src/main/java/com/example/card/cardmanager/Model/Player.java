@@ -18,8 +18,7 @@ public class Player {
     @Column(name = "deck_format")
     private String deck_format;
 
-    public Player(int id, String player_name, String deck_name, String deck_format) {
-        this.id = id;
+    public Player(String player_name, String deck_name, String deck_format) {
         this.player_name = player_name;
         this.deck_name = deck_name;
         this.deck_format = deck_format;

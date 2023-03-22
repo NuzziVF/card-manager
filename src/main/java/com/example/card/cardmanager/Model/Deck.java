@@ -1,33 +1,44 @@
 package com.example.card.cardmanager.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "mtg_deck_cards")
 public class Deck {
+
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
 
-    @Column(name = "deck_id")
-    private int deck_id;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "deck_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Player player;
 
-    @Column(name = "card_id")
-    private int card_id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "card_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Cards cards;
 
     @Column(name = "card_count")
     private int card_count;
 
-    public Deck(int id, int deck_id, int card_id, int card_count) {
-        this.id = id;
-        this.deck_id = deck_id;
-        this.card_id = card_id;
+    public Deck(Player player, Cards cards, int card_count) {
+        this.player = player;
+        this.cards = cards;
         this.card_count = card_count;
     }
 
     public Deck() {
     }
+
 
     public int getId() {
         return id;
@@ -37,20 +48,20 @@ public class Deck {
         this.id = id;
     }
 
-    public int getDeck_id() {
-        return deck_id;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setDeck_id(int deck_id) {
-        this.deck_id = deck_id;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public int getCard_id() {
-        return card_id;
+    public Cards getCards() {
+        return cards;
     }
 
-    public void setCard_id(int card_id) {
-        this.card_id = card_id;
+    public void setCards(Cards cards) {
+        this.cards = cards;
     }
 
     public int getCard_count() {

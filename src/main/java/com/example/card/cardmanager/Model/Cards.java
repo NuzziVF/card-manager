@@ -33,8 +33,7 @@ public class Cards {
     @Column(name = "rarity")
     private String rarity;
 
-    public Cards(int id, String card_name, String mana_cost, int converted_mana_cost, String card_type, int power, int toughness, String rarity) {
-        this.id = id;
+    public Cards(String card_name, String mana_cost, int converted_mana_cost, String card_type, int power, int toughness, String rarity) {
         this.card_name = card_name;
         this.mana_cost = mana_cost;
         this.converted_mana_cost = converted_mana_cost;
