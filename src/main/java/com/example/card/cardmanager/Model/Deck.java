@@ -20,7 +20,6 @@ public class Deck {
     @JsonIgnore
     private Player player;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "card_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
