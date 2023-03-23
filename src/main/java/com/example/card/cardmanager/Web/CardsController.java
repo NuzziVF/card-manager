@@ -3,6 +3,7 @@ package com.example.card.cardmanager.Web;
 import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Services.CardsService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,7 +58,7 @@ public class CardsController {
     @DeleteMapping("/cards/{id}")
     public void deletecard(@PathVariable int id) {
         Optional<Cards> card = cardsService.removeCardById(id);
-        if (card == null)throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/cards")
@@ -70,4 +71,10 @@ public class CardsController {
     public void editingCard(@PathVariable int id, @RequestBody @Valid Cards cards) {
         cardsService.editCard(id, cards);
     }
+
+//    @JsonIgnore
+//    @PutMapping(path = "{card_name}")
+//    public void editingCard(@PathVariable String card_name, @RequestBody @Valid Cards cards) {
+//        cardsRepository.findCardsByName(card_name);
+//    }
 }

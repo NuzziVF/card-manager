@@ -37,6 +37,7 @@ public class CardsService {
         return cardsRepository.findById(id);
     }
 
+
     public Optional<Cards> removeCardById(int id) {
         Optional<Cards> optionalCard = cardsRepository.findById(id);
         if (optionalCard.isPresent()) {
@@ -65,4 +66,5 @@ public class CardsService {
         existingCard.setMana_cost(cards.getMana_cost());
         cardsRepository.save(existingCard);
     }
+
 }
