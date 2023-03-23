@@ -24,6 +24,15 @@ public class CardsService {
         return cards;
     }
 
+    public List<Cards> viewAllCards() {
+        List<Cards> every_card = new ArrayList<>();
+        cardsRepository.findAll()
+                .forEach(every_card::add);
+        return every_card;
+    }
+
+
+
     public Optional<Cards> getCardById(int id) {
         return cardsRepository.findById(id);
     }

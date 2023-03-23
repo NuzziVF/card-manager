@@ -1,19 +1,24 @@
 package com.example.card.cardmanager.Web;
 
 import com.example.card.cardmanager.Model.Cards;
+import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Services.CardsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "api/v1/cards")
 public class CardsController {
-
+    @Autowired
+    private CardsRepository cardsRepository;
     @Autowired
     private CardsService cardsService;
 
@@ -22,7 +27,7 @@ public class CardsController {
         return "Hello World!";
     }
 
-    @GetMapping("/cards")
+    @GetMapping("/all")
     public List<Cards> allCards() {
         List<Cards> cards = cardsService.getAllCards();
         if (cards.isEmpty()) {
@@ -38,6 +43,15 @@ public class CardsController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return card;
+    }
+
+
+    @GetMapping("/view")
+    public ModelAndView viewCards() {
+        ModelAndView mav = new ModelAndView("adminCards");
+        List<Cards> list = cardsService.getAllCards();
+        mav.addObject("cards", list);
+        return mav;
     }
 
     @DeleteMapping("/cards/{id}")
