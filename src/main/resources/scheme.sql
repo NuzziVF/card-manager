@@ -153,4 +153,3 @@ SELECT pd.player_name, pd.deck_name, dc.card_count, c.card_name, c.mana_cost, c.
 FROM mtg_players_deck pd
 INNER JOIN mtg_deck_cards dc ON pd.id = dc.deck_id
 INNER JOIN mtg_cards c ON dc.card_id = c.id;
-

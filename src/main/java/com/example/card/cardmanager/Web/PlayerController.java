@@ -43,4 +43,9 @@ public class PlayerController {
         Optional<Player> player = playerService.removePlayerById(id);
         if (player == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
+
+    @PutMapping("/players/{id}")
+    public void editingPlayer(@PathVariable int id, @RequestBody @Valid Player player) {
+        playerService.editPlayer(id, player);
+    }
 }
