@@ -1,11 +1,13 @@
 package com.example.card.cardmanager.Services;
 
+import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Model.Deck;
+import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Repository.DeckRespository;
+import com.example.card.cardmanager.Repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +17,25 @@ public class DeckService {
     @Autowired
     private DeckRespository deckRespository;
 
-    public List<Deck> getAllDecks() {
-        List<Deck> deck = new ArrayList<>();
-        deckRespository.findAll()
-                .forEach(deck::add);
-        return deck;
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    @Autowired
+    private CardsRepository cardsRepository;
+
+    public Iterable<Deck> getAllDecks() {
+//        List<Deck> deck = new ArrayList<>();
+//        deckRespository.findAll()
+//                .forEach(deck::add);
+        return deckRespository.findAll();
+    }
+
+    public Cards holderName(int deckId, int cardId) {
+        Deck deck = deckRespository.findById(deckId).get();
+
+        Cards cards = cardsRepository.findById(cardId).get();
+        deck.cards_in_deck.add(cards);
+        return cardsRepository.save(cards);
     }
 
     public Optional<Deck> getOneDeck(int id) {

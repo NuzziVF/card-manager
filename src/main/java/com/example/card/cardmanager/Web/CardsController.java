@@ -17,11 +17,6 @@ public class CardsController {
     @Autowired
     private CardsService cardsService;
 
-    @GetMapping("/")
-    public String greeting() {
-        return "Hello World!";
-    }
-
     @GetMapping("/cards")
     public List<Cards> allCards() {
         List<Cards> cards = cardsService.getAllCards();

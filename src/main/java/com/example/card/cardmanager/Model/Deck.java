@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "mtg_deck_cards")
 public class Deck {
@@ -13,6 +16,14 @@ public class Deck {
     @GeneratedValue
     @Column(name = "id")
     private int id;
+
+    @ManyToMany
+    @JoinTable(
+            name = "card_table",
+            joinColumns = @JoinColumn(name = "deck_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id")
+    )
+    public Set<Cards> cards_in_deck = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deck_id", nullable = false)
@@ -69,5 +80,13 @@ public class Deck {
 
     public void setCard_count(int card_count) {
         this.card_count = card_count;
+    }
+
+    public Set<Cards> getCards_in_deck() {
+        return cards_in_deck;
+    }
+
+    public void setCards_in_deck(Set<Cards> cards_in_deck) {
+        this.cards_in_deck = cards_in_deck;
     }
 }
