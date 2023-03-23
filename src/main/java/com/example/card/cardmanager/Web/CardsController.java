@@ -1,23 +1,34 @@
 package com.example.card.cardmanager.Web;
 
 import com.example.card.cardmanager.Model.Cards;
+import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Services.CardsService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "api/v1/cards")
 public class CardsController {
-
+    @Autowired
+    private CardsRepository cardsRepository;
     @Autowired
     private CardsService cardsService;
 
-    @GetMapping("/cards")
+    @GetMapping("/")
+    public String greeting() {
+        return "Hello World!";
+    }
+
+    @GetMapping("/all")
     public List<Cards> allCards() {
         List<Cards> cards = cardsService.getAllCards();
         if (cards.isEmpty()) {
@@ -35,10 +46,19 @@ public class CardsController {
         return card;
     }
 
+
+    @GetMapping("/view")
+    public ModelAndView viewCards() {
+        ModelAndView mav = new ModelAndView("adminCards");
+        List<Cards> list = cardsService.getAllCards();
+        mav.addObject("cards", list);
+        return mav;
+    }
+
     @DeleteMapping("/cards/{id}")
     public void deletecard(@PathVariable int id) {
         Optional<Cards> card = cardsService.removeCardById(id);
-        if (card == null)throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/cards")
@@ -51,4 +71,10 @@ public class CardsController {
     public void editingCard(@PathVariable int id, @RequestBody @Valid Cards cards) {
         cardsService.editCard(id, cards);
     }
+
+//    @JsonIgnore
+//    @PutMapping(path = "{card_name}")
+//    public void editingCard(@PathVariable String card_name, @RequestBody @Valid Cards cards) {
+//        cardsRepository.findCardsByName(card_name);
+//    }
 }

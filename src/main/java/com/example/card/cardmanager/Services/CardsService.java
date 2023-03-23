@@ -24,9 +24,19 @@ public class CardsService {
         return cards;
     }
 
+    public List<Cards> viewAllCards() {
+        List<Cards> every_card = new ArrayList<>();
+        cardsRepository.findAll()
+                .forEach(every_card::add);
+        return every_card;
+    }
+
+
+
     public Optional<Cards> getCardById(int id) {
         return cardsRepository.findById(id);
     }
+
 
     public Optional<Cards> removeCardById(int id) {
         Optional<Cards> optionalCard = cardsRepository.findById(id);
@@ -56,4 +66,5 @@ public class CardsService {
         existingCard.setMana_cost(cards.getMana_cost());
         cardsRepository.save(existingCard);
     }
+
 }
