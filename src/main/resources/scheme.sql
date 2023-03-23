@@ -21,9 +21,8 @@ CREATE TABLE mtg_cards (
 
 CREATE TABLE mtg_deck_cards (
   id SERIAL PRIMARY KEY,
-  deck_id INTEGER NOT NULL REFERENCES mtg_players_deck (id),
-  card_id INTEGER NOT NULL REFERENCES mtg_cards (id),
-  card_count INTEGER NOT NULL
+  deck_id INTEGER NULL REFERENCES mtg_players_deck (id),
+  card_id INTEGER NULL REFERENCES mtg_cards (id)
 );
 
 
@@ -91,11 +90,11 @@ VALUES ('Eldrazi Temple', '{T}', 0, 'Land', 'Rare');
 INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
 VALUES ('Ensnaring Bridge', '{3}', 3, 'Artifact', 'Rare');
 
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 1, 4);
+INSERT INTO mtg_deck_cards (deck_id)
+VALUES (1);
 
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 2, 3);
+INSERT INTO mtg_deck_cards (deck_id)
+VALUES (2);
 
 INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
 VALUES (1, 3, 4);
