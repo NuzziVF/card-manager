@@ -1,7 +1,12 @@
 package com.example.card.cardmanager.Model;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import jakarta.persistence.*;
+import net.minidev.json.annotate.JsonIgnore;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "mtg_cards")
@@ -11,6 +16,10 @@ public class Cards {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "cards_in_deck")
+    private Set<Deck> decks = new HashSet<>();
 
     @Column(name = "card_name")
     private String card_name;
@@ -109,4 +118,5 @@ public class Cards {
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
+
 }

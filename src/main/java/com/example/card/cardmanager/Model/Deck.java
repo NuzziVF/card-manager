@@ -23,27 +23,23 @@ public class Deck {
             joinColumns = @JoinColumn(name = "deck_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
-    public Set<Cards> cards_in_deck = new HashSet<>();
+    private Set<Cards> cards_in_deck = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "deck_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+
     private Player player;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "card_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "card_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Cards cards;
 
-    @Column(name = "card_count")
-    private int card_count;
-
-    public Deck(Player player, Cards cards, int card_count) {
+    public Deck(Player player, Cards cards) {
         this.player = player;
         this.cards = cards;
-        this.card_count = card_count;
     }
 
     public Deck() {
@@ -74,13 +70,13 @@ public class Deck {
         this.cards = cards;
     }
 
-    public int getCard_count() {
-        return card_count;
-    }
-
-    public void setCard_count(int card_count) {
-        this.card_count = card_count;
-    }
+//    public int getCard_count() {
+//        return card_count;
+//    }
+//
+//    public void setCard_count(int card_count) {
+//        this.card_count = card_count;
+//    }
 
     public Set<Cards> getCards_in_deck() {
         return cards_in_deck;
@@ -88,5 +84,9 @@ public class Deck {
 
     public void setCards_in_deck(Set<Cards> cards_in_deck) {
         this.cards_in_deck = cards_in_deck;
+    }
+
+    public void addCards_in_deck(Cards cards) {
+        cards_in_deck.add(cards);
     }
 }

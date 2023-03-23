@@ -30,12 +30,12 @@ public class DeckService {
         return deckRespository.findAll();
     }
 
-    public Cards holderName(int deckId, int cardId) {
+    public Deck addCardToDeck(int deckId, int cardId) {
         Deck deck = deckRespository.findById(deckId).get();
-
         Cards cards = cardsRepository.findById(cardId).get();
-        deck.cards_in_deck.add(cards);
-        return cardsRepository.save(cards);
+
+        deck.addCards_in_deck(cards);
+        return deckRespository.save(deck);
     }
 
     public Optional<Deck> getOneDeck(int id) {
@@ -56,13 +56,13 @@ public class DeckService {
         return deckRespository.save(deck);
     }
 
-    public List<Deck> getAllDecksViaCard(int cardId) {
-        return deckRespository.findByCards_Id(cardId);
-    }
-
-    public List<Deck> getAllDecksViaPlayer(int PlayerId) {
-        return deckRespository.findByPlayer_Id(PlayerId);
-    }
+//    public List<Deck> getAllDecksViaCard(int cardId) {
+//        return deckRespository.findByCards_Id(cardId);
+//    }
+//
+//    public List<Deck> getAllDecksViaPlayer(int PlayerId) {
+//        return deckRespository.findByPlayer_Id(PlayerId);
+//    }
 
 
 }
