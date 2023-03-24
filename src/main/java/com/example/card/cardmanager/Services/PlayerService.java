@@ -22,7 +22,13 @@ public class PlayerService {
         return players;
     }
 
-    public Optional<Player> getPlayerById(int id) { return playerRepository.findById(id);}
+    public Optional<Player> getPlayerById(int id) {
+        return playerRepository.findById(id);
+    }
+
+    public Player getPlayerByName(String playerName) {
+        return (Player) playerRepository.findByPlayerName(playerName);
+    }
 
     public Optional<Player> removePlayerById(int id) {
         Optional<Player> optionalPlayer = playerRepository.findById(id);
@@ -41,7 +47,7 @@ public class PlayerService {
         Optional<Player> optionalPlayer = playerRepository.findById(id);
         if (optionalPlayer.isEmpty()) throw new IllegalArgumentException("Invalid Player ID");
         Player existingCard = optionalPlayer.get();
-        existingCard.setPlayer_name(player.getPlayer_name());
+        existingCard.setPlayerName(player.getPlayerName());
         existingCard.setDeck_name(player.getDeck_name());
         existingCard.setDeck_format(player.getDeck_format());
         playerRepository.save(existingCard);

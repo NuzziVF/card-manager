@@ -34,11 +34,6 @@ public class DeckController {
         return deckService.addCardToDeck(deckId, cardId);
     }
 
-//    @GetMapping("/{id}/card")
-//    public List<Deck> deckFromCardId(@PathVariable int id) {
-//        return deckService.getAllDecksViaCard(id);
-//    }
-//
 //    @GetMapping("/{id}/player")
 //    public List<Deck> deckFromPlayerId(@PathVariable int id) {
 //        return deckService.getAllDecksViaPlayer(id);
