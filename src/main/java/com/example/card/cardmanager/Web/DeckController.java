@@ -29,7 +29,7 @@ public class DeckController {
         return deckService.getOneDeck(id).get();
     }
 
-    @GetMapping("/{deckId}/deck/{cardId}")
+    @PutMapping("/{deckId}/deck/{cardId}")
     public Deck addCardToDeckPage(@PathVariable int deckId, @PathVariable int cardId) {
         return deckService.addCardToDeck(deckId, cardId);
     }

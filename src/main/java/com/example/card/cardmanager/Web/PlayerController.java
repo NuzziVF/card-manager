@@ -35,13 +35,11 @@ public class PlayerController {
 
     @GetMapping("/name/{playerName}")
     public List<Cards> listPlayerByName(@PathVariable String playerName) {
-        try {
-            List<Cards> player = playerService.getPlayerByName(playerName);
-            return player;
-        }
-        catch (Exception e) {
+        List<Cards> player = playerService.getPlayerByName(playerName);
+        if (player.size() == 0) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+        return player;
     }
 
     @PostMapping
