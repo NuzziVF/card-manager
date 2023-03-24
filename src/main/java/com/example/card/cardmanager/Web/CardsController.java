@@ -3,11 +3,9 @@ package com.example.card.cardmanager.Web;
 import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Services.CardsService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1/cards")
 public class CardsController {
     @Autowired
     private CardsRepository cardsRepository;
@@ -43,6 +40,12 @@ public class CardsController {
         if (!card.isPresent()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+        return card;
+    }
+
+    @GetMapping("/cards/name/{cardName}")
+    public List<Cards> getCardName(@PathVariable String cardName) {
+        List<Cards> card = cardsService.getCardByName(cardName);
         return card;
     }
 
