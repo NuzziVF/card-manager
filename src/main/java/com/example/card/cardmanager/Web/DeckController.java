@@ -34,6 +34,11 @@ public class DeckController {
         return deckService.addCardToDeck(deckId, cardId);
     }
 
+    @PutMapping("/{deckId}/edit")
+    public void editPlayer(@PathVariable int deckId, @RequestBody @Valid Deck deck) {
+        deckService.editDeck(deckId, deck);
+    }
+
 //    @GetMapping("/{id}/player")
 //    public List<Deck> deckFromPlayerId(@PathVariable int id) {
 //        return deckService.getAllDecksViaPlayer(id);

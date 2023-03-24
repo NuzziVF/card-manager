@@ -38,6 +38,14 @@ public class DeckService {
         return deckRespository.save(deck);
     }
 
+    public void editDeck(int id, Deck deck) {
+        Optional<Deck> optionalDeck = deckRespository.findById(id);
+        if (optionalDeck.isEmpty()) throw new IllegalArgumentException("Invalid Deck ID: " + id);
+        Deck existingDeck = optionalDeck.get();
+        existingDeck.setPlayer(deck.getPlayer());
+        deckRespository.save(existingDeck);
+    }
+
     public Optional<Deck> getOneDeck(int id) {
         return deckRespository.findById(id);
     }
