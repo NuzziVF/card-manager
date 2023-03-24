@@ -1,5 +1,6 @@
 package com.example.card.cardmanager.Services;
 
+import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Model.Player;
 import com.example.card.cardmanager.Repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class PlayerService {
         return playerRepository.findById(id);
     }
 
-    public Player getPlayerByName(String playerName) {
-        return (Player) playerRepository.findByPlayerName(playerName);
+    public List<Cards> getPlayerByName(String playerName) {
+        return playerRepository.findByPlayerName(playerName);
     }
 
     public Optional<Player> removePlayerById(int id) {

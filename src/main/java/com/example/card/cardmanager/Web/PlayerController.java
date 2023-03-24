@@ -1,6 +1,7 @@
 package com.example.card.cardmanager.Web;
 
 
+import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Model.Player;
 import com.example.card.cardmanager.Services.PlayerService;
 import jakarta.validation.Valid;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -33,17 +33,16 @@ public class PlayerController {
         return player;
     }
 
-//    @GetMapping("/{id}")
-//    public Player listPlayerByName(@PathVariable int id) {
-//        try {
-//            Player player = playerService.getPlayerById(id).get();
-//            return player;
-//        }
-//        catch (NoSuchElementException) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        }
-//
-//    }
+    @GetMapping("/name/{playerName}")
+    public List<Cards> listPlayerByName(@PathVariable String playerName) {
+        try {
+            List<Cards> player = playerService.getPlayerByName(playerName);
+            return player;
+        }
+        catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PostMapping
     public Player postNewPlayer(@RequestBody @Valid Player player) {
