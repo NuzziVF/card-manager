@@ -90,62 +90,12 @@ VALUES ('Eldrazi Temple', '{T}', 0, 'Land', 'Rare');
 INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
 VALUES ('Ensnaring Bridge', '{3}', 3, 'Artifact', 'Rare');
 
+
 INSERT INTO mtg_deck_cards (deck_id)
 VALUES (1);
 
 INSERT INTO mtg_deck_cards (deck_id)
 VALUES (2);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 3, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 4, 2);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 5, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 6, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 7, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 8, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 9, 2);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 10, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 11, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 12, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 13, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 14, 2);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (2, 15, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 16, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 17, 3);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 18, 4);
-
-INSERT INTO mtg_deck_cards (deck_id, card_id, card_count)
-VALUES (1, 19, 2);
 
 
 SELECT pd.player_name, pd.deck_name, dc.card_count, c.card_name, c.mana_cost, c.converted_mana_cost, c.card_type, c.power, c.toughness, c.rarity

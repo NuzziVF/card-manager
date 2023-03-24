@@ -1,7 +1,6 @@
 package com.example.card.cardmanager.Model;
 
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import jakarta.persistence.*;
 import net.minidev.json.annotate.JsonIgnore;
 
@@ -22,7 +21,7 @@ public class Cards {
     private Set<Deck> decks = new HashSet<>();
 
     @Column(name = "card_name")
-    private String card_name;
+    private String cardName;
 
     @Column(name = "mana_cost")
     private String mana_cost;
@@ -43,7 +42,7 @@ public class Cards {
     private String rarity;
 
     public Cards(String card_name, String mana_cost, int converted_mana_cost, String card_type, int power, int toughness, String rarity) {
-        this.card_name = card_name;
+        this.cardName = card_name;
         this.mana_cost = mana_cost;
         this.converted_mana_cost = converted_mana_cost;
         this.card_type = card_type;
@@ -63,12 +62,12 @@ public class Cards {
         this.id = id;
     }
 
-    public String getCard_name() {
-        return card_name;
+    public String getCardName() {
+        return cardName;
     }
 
-    public void setCard_name(String card_name) {
-        this.card_name = card_name;
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
     }
 
     public String getMana_cost() {
