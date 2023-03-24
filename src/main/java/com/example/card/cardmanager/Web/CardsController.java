@@ -14,18 +14,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/cards")
 public class CardsController {
     @Autowired
     private CardsRepository cardsRepository;
     @Autowired
     private CardsService cardsService;
 
-    @GetMapping("/")
-    public String greeting() {
-        return "Hello World!";
-    }
-
-    @GetMapping("/all")
+    @GetMapping
     public List<Cards> allCards() {
         List<Cards> cards = cardsService.getAllCards();
         if (cards.isEmpty()) {
@@ -34,7 +30,7 @@ public class CardsController {
         return cards;
     }
 
-    @GetMapping("/cards/{id}")
+    @GetMapping("/{id}")
     public Optional<Cards> oneCard(@PathVariable int id) {
         Optional<Cards> card = cardsService.getCardById(id);
         if (!card.isPresent()) {
@@ -43,7 +39,7 @@ public class CardsController {
         return card;
     }
 
-    @GetMapping("/cards/name/{cardName}")
+    @GetMapping("/name/{cardName}")
     public List<Cards> getCardName(@PathVariable String cardName) {
         List<Cards> card = cardsService.getCardByName(cardName);
         return card;
@@ -58,19 +54,19 @@ public class CardsController {
         return mav;
     }
 
-    @DeleteMapping("/cards/{id}")
+    @DeleteMapping("/{id}")
     public void deletecard(@PathVariable int id) {
         Optional<Cards> card = cardsService.removeCardById(id);
         if (card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/cards")
+    @PostMapping
     public Cards addingCard(@RequestBody @Valid Cards card) {
         cardsService.addCard(card);
         return card;
     }
 
-    @PutMapping("/cards/{id}")
+    @PutMapping("/{id}")
     public void editingCard(@PathVariable int id, @RequestBody @Valid Cards cards) {
         cardsService.editCard(id, cards);
     }

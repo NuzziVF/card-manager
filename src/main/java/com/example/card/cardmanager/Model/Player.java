@@ -12,14 +12,14 @@ public class Player {
     private int id;
 
     @Column(name = "player_name")
-    private String player_name;
+    private String playerName;
     @Column(name = "deck_name")
     private String deck_name;
     @Column(name = "deck_format")
     private String deck_format;
 
-    public Player(String player_name, String deck_name, String deck_format) {
-        this.player_name = player_name;
+    public Player(String playerName, String deck_name, String deck_format) {
+        this.playerName = playerName;
         this.deck_name = deck_name;
         this.deck_format = deck_format;
     }
@@ -35,12 +35,12 @@ public class Player {
         this.id = id;
     }
 
-    public String getPlayer_name() {
-        return player_name;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setPlayer_name(String player_name) {
-        this.player_name = player_name;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     public String getDeck_name() {
