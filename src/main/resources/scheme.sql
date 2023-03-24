@@ -98,7 +98,7 @@ INSERT INTO mtg_deck_cards (deck_id)
 VALUES (2);
 
 
-SELECT pd.player_name, pd.deck_name, dc.card_count, c.card_name, c.mana_cost, c.converted_mana_cost, c.card_type, c.power, c.toughness, c.rarity
+SELECT pd.player_name, pd.deck_name, c.card_name, c.mana_cost, c.converted_mana_cost, c.card_type, c.power, c.toughness, c.rarity
 FROM mtg_players_deck pd
 INNER JOIN mtg_deck_cards dc ON pd.id = dc.deck_id
 INNER JOIN mtg_cards c ON dc.card_id = c.id;
