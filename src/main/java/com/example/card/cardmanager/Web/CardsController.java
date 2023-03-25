@@ -45,10 +45,19 @@ public class CardsController {
         return card;
     }
 
+    @GetMapping("/{cardName}")
+    public ModelAndView oneViewCard(@PathVariable String cardName) {
+        ModelAndView mav = new ModelAndView("oneCard");
+        List<Cards> list = cardsService.getCardByName(cardName);
+        mav.addObject("oneCard", list);
+        return mav;
+    }
+
+
 
     @GetMapping("/view")
     public ModelAndView viewCards() {
-        ModelAndView mav = new ModelAndView("adminCards");
+        ModelAndView mav = new ModelAndView("viewCards");
         List<Cards> list = cardsService.getAllCards();
         mav.addObject("cards", list);
         return mav;

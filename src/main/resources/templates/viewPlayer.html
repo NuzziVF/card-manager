@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-color: black;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: red;
+        font-weight: bold;
+        background-color: black;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar li {
+        margin-left: 1rem;
+    }
+
+    .navbar form {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar input[type="search"] {
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+        border-color: black;
+    }
+
+    .navbar button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+
+
+</style>
+
+<nav class="navbar">
+
+    <a href="https://magic.wizards.com/en" target="_blank">MAGICARD</a>
+
+    <form role="search" action="">
+        <input type="search" placeholder="Search" aria-label="Search">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        <li>
+            <a href="/index" aria-current="page">Home</a>
+        </li>
+
+        <li>
+            <a href="/viewPage">View</a>
+        </li>
+
+        <li>
+            <a href="/addPage">Add</a>
+        </li>
+
+    </ul>
+</nav>
+<h1 class="title">View Player</h1>
+</body>
+</html>

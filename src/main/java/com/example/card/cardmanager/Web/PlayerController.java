@@ -6,6 +6,7 @@ import com.example.card.cardmanager.Services.PlayerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -45,11 +46,13 @@ public class PlayerController {
 //
 //    }
 
-    @PostMapping
+    @PostMapping("/addPlayer")
     public Player postNewPlayer(@RequestBody @Valid Player player) {
         playerService.addPlayer(player);
         return player;
     }
+
+
 
     @DeleteMapping("/{id}")
     public void deletePlayer(@PathVariable int id) {

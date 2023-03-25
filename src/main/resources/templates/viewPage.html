@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset = "ISO-8859-1" />
-    <link href = "/static/styles.css" rel="stylesheet"/>
-    <title>Spring Boot Application</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
 <style>
@@ -43,7 +42,6 @@
     .navbar input[type="search"] {
         padding: 0.5rem;
         border-radius: 0.25rem;
-
         margin-right: 0.5rem;
         border-color: black;
     }
@@ -57,75 +55,38 @@
         cursor: pointer;
     }
 
-    .home {
+    .title {
+        text-align: center;
+    }
+
+    .card-buttons-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100vw;
         height: 100vh;
-        flex-wrap: wrap;
     }
 
-    .title {
-        font-size: 7em;
-        background-color: black;
-        color: red;
-        padding: 0.5em;
-        margin-bottom: 0;
+    .card-button {
+        padding: 11rem 6rem;
+        border: 1px solid black;
         border-radius: 0.25rem;
-        text-decoration: underline;
-    }
-
-    .description {
-        text-align: center;
-        padding: 0.1em;
-        margin-top: -6em;
-        width: 100%;
-        max-width: 24em;
-        font-size: 2em;
-    }
-
-    footer {
         background-color: black;
         color: red;
-        width: 100%;
-        margin: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+        font-size: 2em;
+        margin: 0 0.5rem;
     }
 
-    .container {
-        width: 100%;
-    }
-
-    footer h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    footer p {
-        font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-    }
-
-    footer ul li a {
-        color: red;
+    .card-button a {
         text-decoration: none;
-        font-size: 1rem;
+        color: red;
     }
 
-    footer ul li a:hover {
-        color: white;
+    .card-button:hover {
+        cursor: pointer;
+        padding: 12rem 7rem;
     }
-
-    .bg-dark {
-        background-color: black !important;
-    }
-
-    .text-white {
-        color: red !important;
-    }
-
-
 
 </style>
 
@@ -151,20 +112,13 @@
             <a href="/addPage">Add</a>
         </li>
 
-
     </ul>
 </nav>
-
-<section class="home">
-    <h1 class="title">MAGICARD</h1>
-    <h1 class="description">This is a small database that keeps track of cards from the popular game "Magic The Gathering."
-    It lets players view all the cards in the database and add them to their own personal deck.</h1>
-</section>
-
-
+<h1 class="title">Would you like to view cards or players?</h1>
+<div class="card-buttons-container">
+    <button class="card-button"><a href="/viewPlayer">View Player</a></button>
+    <button class="card-button"><a href="/cards/view">View Card</a></button>
+</div>
 
 </body>
-<footer>
-    &copy; 2023 MAGICARD - All rights reserved.
-</footer>
 </html>

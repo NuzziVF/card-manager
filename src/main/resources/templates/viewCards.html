@@ -18,8 +18,11 @@
 
     .navbar a {
         text-decoration: none;
-        color: black;
+        color: red;
         font-weight: bold;
+        background-color: black;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
     }
 
     .navbar ul {
@@ -69,11 +72,12 @@
         border: 1px solid #ccc;
         border-radius: 4px;
         box-shadow: 0 2px 4px rgba(0,0,0,.2);
-        width: 250px;
-        height: 300px;
-        margin: 0.5rem;
+        width: 270px;
+        height: 340px;
+        margin: 0.7rem;
         overflow: hidden;
         font-size: 1.2em;
+        padding: 0.2rem;
     }
 
     .card-name {
@@ -109,11 +113,12 @@
 <nav class="navbar">
 
     <a href="https://magic.wizards.com/en" target="_blank">MAGICARD</a>
-
-    <form role="search">
-        <input type="search" placeholder="Search" aria-label="Search">
+<!--    THIS IS THE SEARCH BAR-->
+    <form role="search" method="GET" action="/name">
+        <input type="search" name="cardName" placeholder="Search" aria-label="Search">
         <button type="submit">Search</button>
     </form>
+<!--    THE SEARCH BAR IS ABOVE-->
 
     <ul>
         <li>
@@ -121,16 +126,13 @@
         </li>
 
         <li>
-            <a href="/view">View</a>
+            <a href="/viewPage">View</a>
         </li>
 
         <li>
-            <a href="#">Add Card</a>
+            <a href="/addPage">Add</a>
         </li>
 
-        <li>
-            <a href="#">Logout</a>
-        </li>
 
     </ul>
 
@@ -144,7 +146,7 @@
             <div >
 
                 <div>
-                    <h5 class="card-name"  th:text="${card.card_name}"></h5>
+                    <h5 class="card-name"  th:text="${card.cardName}"></h5>
                     <p class="card-content">
                         <strong>Mana Cost:</strong> <span th:text="${card.mana_cost}"></span><br>
                         <strong>Converted Mana Cost:</strong> <span th:text="${card.converted_mana_cost}"></span><br>

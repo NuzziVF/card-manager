@@ -7,14 +7,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
     @GetMapping("/admin")
     public String adminHome() {
-        return "adminHome";
+        return "homepage";
     }
     @GetMapping("/admin/cards")
     public String adminCards() {
-        return "adminCards";
+        return "viewCards";
     }
     @GetMapping("/admin/cards/add")
     public String addCards() {
         return "addCards";
     }
+
+    @GetMapping("/oneCard")
+    public String oneCard() { return "oneCard";}
+
+    @GetMapping("/addPage")
+    public String addPage() { return "addPage";}
+
+    @GetMapping("/viewPage")
+    public String viewPage() { return "viewPage";}
+
+    @GetMapping("/addPlayer")
+    public String addPlayer() { return "addPlayer";}
+
+    @GetMapping("viewPlayer")
+    public String viewPlayer() {return "viewPlayer";}
 }
