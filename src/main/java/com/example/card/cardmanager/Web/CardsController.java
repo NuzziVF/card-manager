@@ -69,6 +69,13 @@ public class CardsController {
         if (card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
+    @RequestMapping("/delete/{id}")
+    public ModelAndView pageDeleteMethod(@PathVariable int id) {
+        Optional<Cards> card = cardsService.removeCardById(id);
+        if (card == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return viewCards();
+    }
+
     @PostMapping
     public Cards addingCard(@RequestBody @Valid Cards card) {
         cardsService.addCard(card);
