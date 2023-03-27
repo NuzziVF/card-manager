@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" th:each="card: ${cards}">
+    <div >
+
+        <div>
+            <h5 class="card-name"  th:text="${card.cardName}"></h5>
+            <p class="card-content">
+                <strong>Mana Cost:</strong> <span th:text="${card.mana_cost}"></span><br>
+                <strong>Converted Mana Cost:</strong> <span th:text="${card.converted_mana_cost}"></span><br>
+                <strong>Card Type:</strong> <span th:text="${card.card_type}"></span><br>
+                <strong>Power:</strong> <span th:text="${card.power}"></span><br>
+                <strong>Toughness:</strong> <span th:text="${card.toughness}"></span><br>
+                <strong>Rarity:</strong> <span th:text="${card.rarity}"></span><br>
+            </p>
+            <div class="card-actions">
+                <div>
+
+                    <button class="update-btn" type="button"><i class='bx bx-refresh' ></i></button>
+
+                </div>
+                <div>
+                    <form action="@{/cards/${cards.id}}" method="DELETE">
+                        <button class="delete-btn" type="button">
+                            <a href=""></a><i class='bx bxs-trash'></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

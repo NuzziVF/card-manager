@@ -30,7 +30,7 @@ public class CardsService {
         return every_card;
     }
 
-    public List<Cards> getCardByName(String cardName) {
+    public Cards getCardByName(String cardName) {
         return cardsRepository.findByCardName(cardName);
     }
 

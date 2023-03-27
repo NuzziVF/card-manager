@@ -21,6 +21,7 @@ public class CardsController {
     @Autowired
     private CardsService cardsService;
 
+
     @GetMapping
     public List<Cards> allCards() {
         List<Cards> cards = cardsService.getAllCards();
@@ -40,16 +41,26 @@ public class CardsController {
     }
 
     @GetMapping("/name/{cardName}")
-    public List<Cards> getCardName(@PathVariable String cardName) {
-        List<Cards> card = cardsService.getCardByName(cardName);
+    public Cards getCardName(@PathVariable String cardName) {
+        Cards card = cardsService.getCardByName(cardName);
         return card;
     }
 
     @GetMapping("/{cardName}")
     public ModelAndView oneViewCard(@PathVariable String cardName) {
         ModelAndView mav = new ModelAndView("oneCard");
-        List<Cards> list = cardsService.getCardByName(cardName);
+        Cards list = cardsService.getCardByName(cardName);
         mav.addObject("oneCard", list);
+        return mav;
+    }
+
+    @GetMapping("/name")
+    public ModelAndView searchByName(@RequestParam("cardName") String cardName) {
+        // TODO: Implement search logic using cardName parameter
+        Cards searchResults = cardsService.getCardByName(cardName);
+        ModelAndView mav = new ModelAndView("searchResults");
+        mav.addObject("query", cardName);
+        mav.addObject("results", searchResults);
         return mav;
     }
 

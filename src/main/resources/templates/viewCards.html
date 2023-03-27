@@ -114,7 +114,7 @@
 
     <a href="https://magic.wizards.com/en" target="_blank">MAGICARD</a>
 <!--    THIS IS THE SEARCH BAR-->
-    <form role="search" method="GET" action="/name">
+    <form role="search" method="GET" action="/name" th:method="get">
         <input type="search" name="cardName" placeholder="Search" aria-label="Search">
         <button type="submit">Search</button>
     </form>
@@ -162,9 +162,9 @@
 
                         </div>
                         <div>
-                            <form action="@{/cards/${cards.id}}" method="DELETE">
-                                <button class="delete-btn" type="button">
-                                    <a href=""></a><i class='bx bxs-trash'></i>
+                            <form th:action="@{/cards/__${card.id}__}" th:method="DELETE" method="DELETE">
+                                <button class="delete-btn" type="submit">
+                                    <i class='bx bxs-trash'></i>
                                 </button>
                             </form>
                         </div>

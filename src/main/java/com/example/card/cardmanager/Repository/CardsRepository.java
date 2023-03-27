@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CardsRepository extends CrudRepository<Cards, Integer> {
 
-    List<Cards> findByCardName(String cardName);
+    Cards findByCardName(String cardName);
 //    @Query("SELECT * FROM card_collection WHERE card_collection.card_name = 'Something'")
 //    Cards findCardbyName(String card_name);
 
