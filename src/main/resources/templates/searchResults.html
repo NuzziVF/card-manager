@@ -2,36 +2,171 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Search Results</title>
 </head>
 <body>
-<div class="card" th:each="card: ${cards}">
-    <div >
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
 
-        <div>
-            <h5 class="card-name"  th:text="${card.cardName}"></h5>
-            <p class="card-content">
-                <strong>Mana Cost:</strong> <span th:text="${card.mana_cost}"></span><br>
-                <strong>Converted Mana Cost:</strong> <span th:text="${card.converted_mana_cost}"></span><br>
-                <strong>Card Type:</strong> <span th:text="${card.card_type}"></span><br>
-                <strong>Power:</strong> <span th:text="${card.power}"></span><br>
-                <strong>Toughness:</strong> <span th:text="${card.toughness}"></span><br>
-                <strong>Rarity:</strong> <span th:text="${card.rarity}"></span><br>
-            </p>
-            <div class="card-actions">
-                <div>
+    .navbar a {
+        text-decoration: none;
+        color: red;
+        font-weight: bold;
+        background-color: black;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+    }
 
-                    <button class="update-btn" type="button"><i class='bx bx-refresh' ></i></button>
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar li {
+        margin-left: 1rem;
+    }
+
+    .navbar form {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar input[type="search"] {
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+
+        margin-right: 0.5rem;
+        border-color: black;
+    }
+
+    .navbar button[type="submit"] {
+        padding: 0.5rem 1rem;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,.2);
+        width: 270px;
+        height: 340px;
+        margin: 0.7rem;
+        overflow: hidden;
+        font-size: 1.2em;
+        padding: 0.2rem;
+    }
+
+    .card-name {
+        font-size: 1.3em;
+        text-decoration: underline;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .card-content {
+        text-align: left;
+        margin: 1em;
+
+    }
+
+
+    .card-actions {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .card-actions button {
+        font-size: 1.3em;
+        cursor: pointer;
+    }
+
+    .card-actions button:hover {
+        border-color: black;
+        color: red;
+    }
+</style>
+
+<nav class="navbar">
+
+    <a href="https://magic.wizards.com/en" target="_blank">MAGICARD</a>
+    <!--    THIS IS THE SEARCH BAR-->
+    <form role="search" method="GET" action="name" th:object="${cards}">
+        <input type="search" name="cardName" placeholder="Search" aria-label="Search">
+        <button type="submit">Search</button>
+    </form>
+    <!--    THE SEARCH BAR IS ABOVE-->
+
+    <ul>
+        <li>
+            <a href="/index" aria-current="page">Home</a>
+        </li>
+
+        <li>
+            <a href="/viewPage">View</a>
+        </li>
+
+        <li>
+            <a href="/addPage">Add</a>
+        </li>
+
+
+    </ul>
+
+</nav>
+<h1 class="title">Showing Search Results...</h1>
+<div class="card-container">
+    <div class="card" th:each="card: ${results}">
+        <div >
+
+            <div>
+                <h5 class="card-name"  th:text="${card.cardName}"></h5>
+                <p class="card-content">
+                    <strong>Mana Cost:</strong> <span th:text="${card.mana_cost}"></span><br>
+                    <strong>Converted Mana Cost:</strong> <span th:text="${card.converted_mana_cost}"></span><br>
+                    <strong>Card Type:</strong> <span th:text="${card.card_type}"></span><br>
+                    <strong>Power:</strong> <span th:text="${card.power}"></span><br>
+                    <strong>Toughness:</strong> <span th:text="${card.toughness}"></span><br>
+                    <strong>Rarity:</strong> <span th:text="${card.rarity}"></span><br>
+                </p>
+                <div class="card-actions">
+                    <div>
+
+                        <button class="update-btn" type="button"><i class='bx bx-refresh' ></i></button>
+
+                    </div>
+                    <div>
+                        <!--                            <form action="@{/cards/${cards.id}}" method="DELETE"></form>-->
+                        <a th:href="@{/cards/delete/{id}(id=${card.id})}">
+                            <button class="delete-btn" type="button">
+                                <i class='bx bxs-trash'></i>
+                            </button>
+                        </a>
+
+                    </div>
 
                 </div>
-                <div>
-                    <form action="@{/cards/${cards.id}}" method="DELETE">
-                        <button class="delete-btn" type="button">
-                            <a href=""></a><i class='bx bxs-trash'></i>
-                        </button>
-                    </form>
-                </div>
-
             </div>
         </div>
     </div>
