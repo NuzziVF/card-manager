@@ -157,18 +157,18 @@
                     </p>
                     <div class="card-actions">
                         <div>
-                            <form action="/cards" method="post">
-                                <button class="update-btn" type="button"><i class='bx bx-refresh' ></i></button>
-                            </form>
+                            <a th:href="@{/cards/edit/certain/{id}(id=${card.id})}">
+                                <button class="update-btn" type="button">
+                                    <i class='bx bx-refresh' ></i>
+                                </button>
+                            </a>
                         </div>
                         <div>
-<!--                            <form action="@{/cards/${cards.id}}" method="DELETE"></form>-->
-                                <a th:href="@{/cards/delete/{id}(id=${card.id})}">
-                                    <button class="delete-btn" type="button">
-                                        <i class='bx bxs-trash'></i>
-                                    </button>
-                                </a>
-
+                            <a th:href="@{/cards/delete/{id}(id=${card.id})}">
+                                <button class="delete-btn" type="button">
+                                    <i class='bx bxs-trash'></i>
+                                </button>
+                            </a>
                         </div>
 
                     </div>

@@ -54,16 +54,34 @@ public class CardsController {
 //        mav.addObject("oneCard", list);
 //        return mav;
 //    }
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<?> handleForm(@RequestParam("cardName") String cardName,
+    @RequestMapping(value = "/edit/certain/editing/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> editCardForm(@RequestParam("cardName") String cardName,
                                         @RequestParam("mana_cost") String mana_cost,
                                         @RequestParam("converted_mana_cost") int CMC,
-                                        @RequestParam("cardType") int cardType,
+                                        @RequestParam("cardType") String cardType,
                                         @RequestParam("power") int power,
                                         @RequestParam("toughness") int toughness,
-                                        @RequestParam("rarity") int rarity) {
-        return null;
+                                        @RequestParam("rarity") String rarity,
+                                        @PathVariable int id
+    ) {
+        Cards card = new Cards(cardName, mana_cost, CMC, cardType, power, toughness, rarity);
+        cardsService.editCard(id, card);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Card edited successfully");
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public ResponseEntity<?> addCardForm(@RequestParam("cardName") String cardName,
+                                        @RequestParam("mana_cost") String mana_cost,
+                                        @RequestParam("converted_mana_cost") int CMC,
+                                        @RequestParam("cardType") String cardType,
+                                        @RequestParam("power") int power,
+                                        @RequestParam("toughness") int toughness,
+                                        @RequestParam("rarity") String rarity) {
+        Cards card = new Cards(cardName, mana_cost, CMC, cardType, power, toughness, rarity);
+        cardsService.addCard(card);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Card created successfully");
+    }
+
     @GetMapping("/edit/certain/{id}")
     public ModelAndView editCardById(@PathVariable int id) {
         Cards card = cardsService.getCardById(id).get();
