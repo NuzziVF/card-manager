@@ -6,6 +6,7 @@ import com.example.card.cardmanager.Services.CardsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +32,7 @@ public class CardsController {
         return cards;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/one/{id}")
     public Optional<Cards> oneCard(@PathVariable int id) {
         Optional<Cards> card = cardsService.getCardById(id);
         if (!card.isPresent()) {
@@ -40,17 +41,34 @@ public class CardsController {
         return card;
     }
 
-    @GetMapping("/name/{cardName}")
-    public Cards getCardName(@PathVariable String cardName) {
-        Cards card = cardsService.getCardByName(cardName);
-        return card;
+//    @GetMapping("/name/{cardName}")
+//    public Cards getCardName(@PathVariable String cardName) {
+//        Cards card = cardsService.getCardByName(cardName);
+//        return card;
+//    }
+//
+//    @GetMapping("/{cardName}")
+//    public ModelAndView oneViewCard(@PathVariable String cardName) {
+//        ModelAndView mav = new ModelAndView("oneCard");
+//        Cards list = cardsService.getCardByName(cardName);
+//        mav.addObject("oneCard", list);
+//        return mav;
+//    }
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public ResponseEntity<?> handleForm(@RequestParam("cardName") String cardName,
+                                        @RequestParam("mana_cost") String mana_cost,
+                                        @RequestParam("converted_mana_cost") int CMC,
+                                        @RequestParam("cardType") int cardType,
+                                        @RequestParam("power") int power,
+                                        @RequestParam("toughness") int toughness,
+                                        @RequestParam("rarity") int rarity) {
+        return null;
     }
-
-    @GetMapping("/{cardName}")
-    public ModelAndView oneViewCard(@PathVariable String cardName) {
-        ModelAndView mav = new ModelAndView("oneCard");
-        Cards list = cardsService.getCardByName(cardName);
-        mav.addObject("oneCard", list);
+    @GetMapping("/edit/certain/{id}")
+    public ModelAndView editCardById(@PathVariable int id) {
+        Cards card = cardsService.getCardById(id).get();
+        ModelAndView mav = new ModelAndView("editCards");
+        mav.addObject("card", card);
         return mav;
     }
 
@@ -63,8 +81,6 @@ public class CardsController {
         mav.addObject("results", searchResults);
         return mav;
     }
-
-
 
     @GetMapping("/view")
     public ModelAndView viewCards() {

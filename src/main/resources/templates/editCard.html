@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" th:action="@{/cards/}" th:object="${cards}">
+        <input id="cardName" placeholder="Enter Card Name" required type="text" th:field="*{cardName}"/>
+        <input id="mana_cost" placeholder="Enter Mana Cost" required type="text" th:field="*{mana_cost}"/>
+        <input id="converted_mana_cost" placeholder="Enter CMC" required type="number" th:field="*{converted_mana_cost}"/>
+        <select id="cardType" required th:field="*{card_type}">
+            <option value="" hidden>Select a Card Type</option>
+            <option value="Instant" hidden>Instant</option>
+            <option value="Creature" hidden>Creature</option>
+            <option value="Sorcery" hidden>Sorcery</option>
+        </select>
+        <input id="power" placeholder="Enter Mana Cost" required type="number" th:field="*{power}"/>
+        <input id="toughness" placeholder="Enter Mana Cost" required type="number" th:field="*{toughness}"/>
+        <select id="rarity" required th:field="*{card_type}">
+            <option value="" hidden>Select a Rarity</option>
+            <option value="Mythic" hidden>Mythic</option>
+            <option value="Rare" hidden>Rare</option>
+            <option value="Uncommon" hidden>Uncommon</option>
+            <option value="Common" hidden>Common</option>
+        </select>
+        </div>
+        <input type="submit" value="Edit Card">
+    </form>
+</body>
+</html>
+
