@@ -34,9 +34,9 @@ public class DeckController {
         return deckService.addCardToDeck(deckId, cardId);
     }
 
-    @PutMapping("/{deckId}/edit")
-    public void editPlayer(@PathVariable int deckId, @RequestBody @Valid Deck deck) {
-        deckService.editDeck(deckId, deck);
+    @PutMapping("/edit/{deckId}/{playerId}")
+    public void editPlayer(@PathVariable int playerId, @PathVariable int deckId, @RequestBody @Valid Deck deck) {
+        deckService.editDeck(deckId, playerId, deck);
     }
 
 //    @GetMapping("/{id}/player")
@@ -44,9 +44,9 @@ public class DeckController {
 //        return deckService.getAllDecksViaPlayer(id);
 //    }
 
-    @PostMapping
-    public Deck postNewDeck(@RequestBody @Valid Deck deck) {
-        deckService.addDeck(deck);
+    @PostMapping("/addDeck/{playerId}")
+    public Deck postNewDeck(@PathVariable int playerId, @RequestBody @Valid Deck deck) {
+        deckService.addDeck(deck, playerId);
         return deck;
     }
 

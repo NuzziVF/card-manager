@@ -2,6 +2,7 @@ package com.example.card.cardmanager.Services;
 
 import com.example.card.cardmanager.Model.Cards;
 import com.example.card.cardmanager.Model.Deck;
+import com.example.card.cardmanager.Model.Player;
 import com.example.card.cardmanager.Repository.CardsRepository;
 import com.example.card.cardmanager.Repository.DeckRespository;
 import com.example.card.cardmanager.Repository.PlayerRepository;
@@ -38,11 +39,12 @@ public class DeckService {
         return deckRespository.save(deck);
     }
 
-    public void editDeck(int id, Deck deck) {
-        Optional<Deck> optionalDeck = deckRespository.findById(id);
-        if (optionalDeck.isEmpty()) throw new IllegalArgumentException("Invalid Deck ID: " + id);
+    public void editDeck(int deckId, int playerId, Deck deck) {
+        Optional<Deck> optionalDeck = deckRespository.findById(deckId);
+        if (optionalDeck.isEmpty()) throw new IllegalArgumentException("Invalid Deck ID: " + deckId);
+        Player newPlayer = playerRepository.findById(playerId).get();
         Deck existingDeck = optionalDeck.get();
-        existingDeck.setPlayer(deck.getPlayer());
+        existingDeck.setPlayer(newPlayer);
         deckRespository.save(existingDeck);
     }
 
@@ -60,7 +62,14 @@ public class DeckService {
         }
     }
 
-    public Deck addDeck(Deck deck) {
+    public Deck addDeck(Deck deck, int playerId) {
+
+//         Get the player from the database
+        Player player = playerRepository.findById(playerId).get();
+        deck.setPlayer(player); // Set the player attribute
+
+//         Save the deck instance to the database
+//        entityManager.persist(deck);
         return deckRespository.save(deck);
     }
 
