@@ -90,6 +90,66 @@ VALUES ('Eldrazi Temple', '{T}', 0, 'Land', 'Rare');
 INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
 VALUES ('Ensnaring Bridge', '{3}', 3, 'Artifact', 'Rare');
 
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Snapcaster Mage', '{1}{U}', 2, 'Creature', 2, 1, 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Brainstorm', '{U}', 1, 'Instant', 'Common');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Delver of Secrets', '{U}', 1, 'Creature', 1, 1, 'Uncommon');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Deaths Shadow', '{B}{B}', 1, 'Creature', 13, 13, 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Tasigur, the Golden Fang', '{1}{B}{G}', 4, 'Creature', 4, 5, 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Deathrite Shaman', '{B/G}', 1, 'Creature', 1, 2, 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Sneak Attack', '{2}{R}', 3, 'Enchantment', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Blood Moon', '{2}{R}', 3, 'Enchantment', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Griselbrand', '{4}{B}{B}', 8, 'Creature', 7, 7, 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Emrakul, the Aeons Torn', '{15}', 15, 'Creature', 15, 15, 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Ancestral Recall', '{U}', 1, 'Instant', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Black Lotus', '{0}', 0, 'Artifact', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, rarity)
+VALUES ('Mox Sapphire', '{0}', 0, 'Artifact', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Urza, Lord High Artificer', '{2}{U}', 4, 'Legendary Creature', 1, 4, 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Oko, Thief of Crowns', '{1}{G}{U}', 3, 'Planeswalker', 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Uro, Titan of Nature''s Wrath', '{1}{G}{U}', 3, 'Creature', 6, 6, 'Mythic Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Demonic Tutor', '{1}{B}', 2, 'Sorcery', 'Uncommon');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Necropotence', '{B}{B}{B}', 3, 'Enchantment', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Time Walk', '{1}{U}', 2, 'Sorcery', 'Rare');
+
+INSERT INTO mtg_cards (card_name, mana_cost, converted_mana_cost, card_type, power, toughness, rarity)
+VALUES ('Time Vault', '{2}', 2, 'Artifact', 'Rare');
+
 
 INSERT INTO mtg_deck_cards (deck_id)
 VALUES (1);
